@@ -10,14 +10,11 @@
     <h1>Base64 Code from OneNet</h1>
     <pre id="data"></pre>
     <script>
-        var settings = {
-            "url": "http://api.onenet.hk.chinamobile.com/devices/161379916/datapoints",
-            "method": "GET",
-            "timeout": 0,
-            "headers": {
-                "API-Key": "7Nvk6zxDmTRJ2tjKz8yXStogHRI="
-            },
-        };
+    var settings = {
+    "url": "http://api.onenet.hk.chinamobile.com/devices/161379916/datapoints?API-Key=7Nvk6zxDmTRJ2tjKz8yXStogHRI=",
+    "method": "GET",
+    "timeout": 0,
+};
 
         $.ajax(settings).done(function (response) {
             console.log(response);
