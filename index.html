@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneNet Base64 Data Display</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Base64 Data from OneNet</h1>
+    <pre id="data"></pre>
+    <script>
+        var settings = {
+            "url": "https://api.onenet.hk.chinamobile.com/devices/161379916/datapoints",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "API-Key": "7Nvk6zxDmTRJ2tjKz8yXStogHRI="
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            if (response.errno === 0) {
+                const base64Data = response.data.datastreams[0].datapoints[0].value;
+                document.getElementById('data').innerText = base64Data;
+            } else {
+                document.getElementById('data').innerText = 'Failed to load data.';
+            }
+        }).fail(function() {
+            document.getElementById('data').innerText = 'Error fetching data.';
+        });
+    </script>
+</body>
+</html>
